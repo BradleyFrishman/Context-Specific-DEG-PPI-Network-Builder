@@ -1,6 +1,5 @@
 # Context-Specific-DEG-PPI-Network-Builder
 # Manuscript Title: " A Context-Specific, Literature-Supported Framework for Validating Stress Response Models in Mammals"
-# Context-Specific DEG PPI Network Builder
 
 This repository contains the Python source code used to construct and analyze context-specific protein-protein interaction (PPI) networks for validating computational models of differential gene expression (DEG) under temperature stress.
 
