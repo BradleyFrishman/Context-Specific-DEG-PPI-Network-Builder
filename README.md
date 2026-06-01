@@ -1,4 +1,5 @@
-# Manuscript Title: " A Context-Specific, Literature-Supported Framework for Validating Stress Response Models in Mammals"
+# Manuscript Title: " A Context-Specific, Literature-Supported Framework for Validating Differentially Expressed Genes Responding to Environmental Perturbations <img width="468" height="70" alt="image" src="https://github.com/user-attachments/assets/860b7434-5ac2-4749-839b-d7a49fa26143" />
+"
 # Context-Specific-DEG-PPI-Network-Builder
 
 This repository contains the Python source code used to construct and analyze context-specific protein-protein interaction (PPI) networks for validating computational models of differential gene expression (DEG) under temperature stress.
