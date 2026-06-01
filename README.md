@@ -1,4 +1,4 @@
-# Manuscript Title: " A Context-Specific, Literature-Supported Framework for Validating Differentially Expressed Genes Responding to Environmental Perturbations <img width="468" height="70" alt="image" src="https://github.com/user-attachments/assets/860b7434-5ac2-4749-839b-d7a49fa26143" />
+# Manuscript Title: " A Context-Specific, Literature-Supported Framework for Validating Differentially Expressed Genes Responding to Environmental Perturbations
 "
 # Context-Specific-DEG-PPI-Network-Builder
 
