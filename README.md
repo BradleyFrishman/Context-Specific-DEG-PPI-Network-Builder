@@ -143,7 +143,7 @@ These findings support the biological validity of the tested stress-response mod
 If using this code, please cite:
 
 Frishman, B., Gonzalez, J., & Forbes, V.  
-*A Context-Specific, Literature-Supported Framework for Validating Stress Response Models in Mammals*  
+*A Context-Specific, Literature-Supported Framework for Validating Differentially Expressed Genes Responding to Environmental Perturbations*  
 (Working manuscript)
 
 ---
