@@ -1,0 +1,11 @@
+temperature,scenario,lcc_size,statistic
+32,Aggressive downshift,116.1,Mean random LCC size
+32,Conservative downshift,124.65,Mean random LCC size
+32,Conservative upshift,126.25,Mean random LCC size
+32,Aggressive upshift,133.1,Mean random LCC size
+32,Observed,133,Observed LCC size
+41,Aggressive downshift,127.1,Mean random LCC size
+41,Conservative downshift,134.45,Mean random LCC size
+41,Conservative upshift,137.6,Mean random LCC size
+41,Aggressive upshift,143.3,Mean random LCC size
+41,Observed,140,Observed LCC size

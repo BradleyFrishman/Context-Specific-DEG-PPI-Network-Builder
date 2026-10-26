@@ -1,0 +1,5 @@
+temperature,gene_set,ppi_enrichment_p,source
+32,principal,5.86e-05,Manuscript STRING results table
+41,principal,1.3e-08,Manuscript STRING results table
+32,limma,<1.0e-16,Manuscript STRING results table
+41,limma,<1.0e-16,Manuscript STRING results table

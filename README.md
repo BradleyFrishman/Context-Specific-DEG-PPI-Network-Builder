@@ -1,157 +1,73 @@
-# Manuscript Title: " A Context-Specific, Literature-Supported Framework for Validating Differentially Expressed Genes Responding to Environmental Perturbations
-"
-# Context-Specific-DEG-PPI-Network-Builder
+# Condition-Informed PPI Network Evaluation
 
-This repository contains the Python source code used to construct and analyze context-specific protein-protein interaction (PPI) networks for validating computational models of differential gene expression (DEG) under temperature stress.
+Reproducible analyses for **A Condition-Informed Framework for Evaluating Temperature-Responsive Gene Sets Using Protein Interaction Data**.
 
-The goal of this project is to determine whether model-selected genes form biologically meaningful and literature-supported mechanisms rather than reflecting statistical noise.
+This algorithm evaluates selected RNA-seq gene sets by constructing protein interaction networks in which shared intermediaries are restricted to the condition-specific differentially expressed genes (DEGs). It compares these networks with networks allowing unrestricted intermediaries and with approximately degree-matched random gene sets.
 
-This work was developed as part of undergraduate research in computational biology and temperature-response genomics.
+## Quick start
 
----
+Use Python **3.12**. From the repository root:
 
-## Biological Question
+```bash
+python -m venv .venv
+source .venv/bin/activate
+python -m pip install -r requirements.txt
+python run.py --verify --plots
+```
 
-When mammals experience environmental change (such as extreme heat or cold), computational models attempt to predict which genes drive the physiological response.
+On Windows, activate the environment with `.venv\Scripts\activate`.
 
-However, identifying differentially expressed genes (DEGs) is not enough—we must determine whether those genes actually participate in a coherent biological mechanism & exclude noisy genes.
+The run uses bundled, frozen inputs and makes **no network requests**. Outputs go to `results/`; source data and reference results are never overwritten. To choose another output directory:
 
-This project tests whether a model-selected subset of genes:
+```bash
+python run.py --output my_results --verify --plots
+```
 
-- form significantly interconnected protein-protein interaction networks
-        - as measured by their largest connected subnetworks (Largest Connected Components, LCCs)
-- outperform degree-matched random gene sets
-- show stronger biological specificity than traditional enrichment tools like STRING-db
+`--verify` compares regenerated numerical results and randomization draws with the saved reference results. Graph semantics can also be checked independently:
 
----
+```bash
+python -m unittest discover -s tests -v
+```
 
-## Core Method
+## Where to find things
 
-### First-order connection
+| Folder/file | Contents |
+|---|---|
+| `run.py` | One entry point for the reported computational analyses |
+| `src/` | Network construction, sampling, statistical tests, and plots |
+| `data/` | Frozen interaction cache, gene sets, DEG bridge lists, and housekeeping IDs |
+| `reference/` | Final numerical results and draws used for verification |
+| `docs/analysis_guide.md` | Analysis-to-manuscript mapping and output definitions |
+| `docs/data_sources.md` | Input provenance and identifier conventions |
+| `docs/string_comparison.md` | Reported STRING results and original website settings |
+| `archive/degree_shift/` | Original degree-shift figure panels and provenance notes |
+| `tests/` | Independent checks of graph construction and LCC calculations |
 
-A direct protein-protein interaction between two model-selected genes.
+## Included analyses
 
-### Second-order connection
+- Principal Response (G1+G2+G4), Support Group (G3), and Principal-Response-sized limma subsets at 32°C and 41°C.
+- Second-order-only and combined first- and second-order networks.
+- Paired unrestricted/restricted comparisons using 1,000 identical random sets per gene set. ΔLCC is unrestricted LCC size minus DEG-restricted LCC size.
+- Upper-tail empirical LCC-size and LCC-edge-count enrichment tests, plus the reported lower-tail comparisons.
+- Iteration sensitivity at 100, 500, 1,000, and 1,500 nested draws from the same sequence.
+- One-sided Fisher tests for G3 housekeeping allocation and background enrichment.
+- G3 median-degree tests using 1,000 size-matched random sets, without degree matching, before and after removing housekeeping genes.
+- Condition-specific descriptive degree statistics and regenerated degree-distribution plots.
 
-Two model-selected genes are connected if they both interact with the same DEG.
+The frozen cache contains **9,825 candidate genes**. Networks use 20 observed-degree quantile bins for approximate matching. All sets at a temperature use the same full DEG bridge list. Bridges establish edges between selected nodes; they are not added as extra graph nodes. First-order links are undirected if either endpoint records the other. Parallel edges and self-edges are not added. Activating/inhibitory effects and expression direction are not assigned.
 
-Importantly:
+## Findings represented by these files
 
-**Second-order interactions are only allowed when the bridge/intermediate gene is itself also a DEG.**
+At 32°C, DEG-restricted LCC sizes were larger than the random expectation for Principal Response, G3, and limma sets. G3 also had enriched LCC edge counts. Principal Response genes preferentially retained connectivity under DEG restriction; the G3 and limma retention tests were not significant. Corresponding restricted-network and retention comparisons at 41°C were not significant. Housekeeping genes were disproportionately allocated to G3 at both temperatures; background enrichment was significant only at 41°C.
 
-This DEG-restricted approach improves biological specificity and prevents inflated connectivity caused by generic hub proteins.
+## Reproduction coverage
 
----
+The bundled numerical network, housekeeping, degree, and iteration-sensitivity analyses can be regenerated and checked against frozen references. The original degree-shift panels are preserved, but their original simulation draws, seed, and source script were not available in the supplied analysis files. STRING was a separate version-12.0 website analysis; reported values and settings are documented, but its original session exports were not supplied. These two items are not represented as exact computational reruns. See the linked documentation for details.
 
-## Primary Validation Metric
+Plots regenerated by `--plots` show the underlying reported statistics; their styling need not match the manuscript's original artwork.
 
-### Largest Connected Component (LCC)
+## Citation and licensing
 
-The LCC is the largest subset of genes that are mutually connected through known protein-protein interactions.
+Bradley Frishman, Jorge Gonzalez, and Valery Forbes. *A Condition-Informed Framework for Evaluating Temperature-Responsive Gene Sets Using Protein Interaction Data*. Working manuscript.
 
-We use LCC instead of raw edge count because:
-
-- edge count may not not guarantee mechanistic coherence
-- LCC may better reflect coordinated biological function
-- stress-response pathways are expected to behave as cohesive functional subnetworks
-
----
-
-## Null Model
-
-### Degree-Preserving Randomization
-
-To control for bias from highly studied genes, random gene sets are generated using degree-matched sampling.
-
-Genes are binned based on known interaction counts (20 bins), and random sets are sampled to preserve the same degree distribution (or as similar distribution as possible) as the observed gene set.
-
-This prevents inflated significance caused by genes with naturally high connectivity.
-
----
-
-## Main Scripts
-
-### `Building_Set_4.py`
-
-Constructs context-specific first- and second-order DEG-restricted PPI networks.
-
-### `Building_Set_4_with_Vis.py`
-
-Generates network visualizations and outputs the largest connected component.
-
-### `Build 2nd order PA sets from Background 4.py`
-
-Builds second-order networks using Human Protein Atlas interactions and analyzes network fragmentation.
-
-### `Full Pipeline Single File 2.py`
-
-Runs network analysis for a single input file and reports network statistics.
-
-### `Generate_random_csv.py`
-
-Generates randomized degree-matched null gene sets.
-
-### `iterations_1000.py`
-
-Performs large-scale randomization iterations for null distribution generation.
-
-### `Refined_Known_Interactions.py`
-
-Processes known interactions from Protein Atlas and prepares DEG-restricted interaction mappings.
-
-### `Connections_2.py`
-
-Builds second-order connection columns for gene interaction datasets.
-
----
-
-## Data Sources
-
-### Human Protein Atlas
-
-Used to identify literature-supported known protein-protein interactions. This website compiles protein-protein interactions from BioGRID, IntAct, BioPlex, and OpenCell. 
-
-https://www.proteinatlas.org/
-
-### STRING-db
-
-Used for comparison with standard enrichment-based PPI validation.
-
-https://string-db.org/
-
-### HRT Atlas
-
-Used for housekeeping gene validation.
-
----
-
-## Key Findings
-
-Across both 32°C and 41°C temperature stress conditions:
-
-- >75% of Principal Response genes from the Gonzalez et al., 2026 paper (https://doi.org/10.1186/s12864-026-12823-7) (our test-case) joined the Largest Connected Component
-- observed LCCs were significantly larger than degree-matched random expectations
-- Support Group genes showed strong housekeeping gene enrichment
-- STRING confirmed enrichment, but produced less stable and less context-specific results. (randomly produced gene sets tended to have a significant PPI-enrichment P-value)
-
-These findings support the biological validity of the tested stress-response model.
-
----
-
-## Citation
-
-If using this code, please cite:
-
-Frishman, B., Gonzalez, J., & Forbes, V.  
-*A Context-Specific, Literature-Supported Framework for Validating Differentially Expressed Genes Responding to Environmental Perturbations*  
-(Working manuscript)
-
----
-
-## Author
-
-Bradley Frishman  
-University of Florida  
-Undergraduate Researcher — Computational Biology / Stress Genomics
-
----
+Code is distributed under the existing [MIT license](LICENSE). Third-party database content remains subject to its source terms; see [data sources](docs/data_sources.md).

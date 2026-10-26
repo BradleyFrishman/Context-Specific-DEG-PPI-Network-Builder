@@ -1,0 +1,52 @@
+[
+  {
+    "path": "data/background_interactions.csv.gz",
+    "sha256": "434a9a2e89649e9b7a681a3b54a5d6aac17ebfe4c353013e2b1e87c575ea8c70",
+    "bytes": 792526
+  },
+  {
+    "path": "data/deg_bridges/32.csv",
+    "sha256": "29ed65b71eee60455239960f7f3b5eaf8fd0c35302deab783c31429843402797",
+    "bytes": 47782
+  },
+  {
+    "path": "data/deg_bridges/41.csv",
+    "sha256": "bacef5444f02f12a6a1911c2c658a053f79f6f756bfbdd30142148c769a0637c",
+    "bytes": 45555
+  },
+  {
+    "path": "data/gene_sets/limma_32.csv",
+    "sha256": "4e0c752c7f1ea30f71a8621880e222d3b459096ec90ddc204d614b10c26199d9",
+    "bytes": 3106
+  },
+  {
+    "path": "data/gene_sets/limma_41.csv",
+    "sha256": "061b083718e3b283e6e41eea2be132de1244fb74ad511497bdf36d4e90eeaafc",
+    "bytes": 3480
+  },
+  {
+    "path": "data/gene_sets/principal_32.csv",
+    "sha256": "ecce9f46216f12f3e9d9af2c2c35185e1149cc1321da937c0648636fc607de3e",
+    "bytes": 3106
+  },
+  {
+    "path": "data/gene_sets/principal_41.csv",
+    "sha256": "004246497709df3c46bbe3d07882bb31eeaff10a5195d3259f69212fb889ec03",
+    "bytes": 3480
+  },
+  {
+    "path": "data/gene_sets/support_32.csv",
+    "sha256": "76ab8a152e7975c7218f77f0745eb41bd33ee053a201ec3bba77858a9ac35ac9",
+    "bytes": 1151
+  },
+  {
+    "path": "data/gene_sets/support_41.csv",
+    "sha256": "93440612149f8903469009569299f1fc8877cabcbbf41ef92c85d712c61112b6",
+    "bytes": 913
+  },
+  {
+    "path": "data/housekeeping_genes.csv",
+    "sha256": "2021fe76b1ba1eb2ee7e2c06a60bfecf4b271245db1da4c1bdbc60cf50eb4806",
+    "bytes": 36670
+  }
+]

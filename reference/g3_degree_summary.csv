@@ -1,0 +1,5 @@
+temperature,analysis,n_genes,n_background,observed_median,background_median,tail_count,iterations,empirical_p
+32,All genes,67,9825,22.0,13.0,15,1000,0.015984015984015984
+32,Non-housekeeping only,49,7686,16.0,10.0,72,1000,0.07292707292707293
+41,All genes,53,9825,22.0,13.0,25,1000,0.025974025974025976
+41,Non-housekeeping only,35,7686,9.0,10.0,724,1000,0.7242757242757243
