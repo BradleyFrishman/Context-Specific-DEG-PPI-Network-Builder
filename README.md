@@ -1,8 +1,8 @@
 # Condition-Informed PPI Network Evaluation
 
-Reproducible analyses for **A Condition-Informed Framework for Evaluating Temperature-Responsive Gene Sets Using Protein Interaction Data**.
+**A Condition-Informed Framework for Evaluating Temperature-Responsive Gene Sets Using Protein Interaction Data**.
 
-This algorithm evaluates selected RNA-seq gene sets by constructing protein interaction networks in which shared intermediaries are restricted to the condition-specific differentially expressed genes (DEGs). It compares these networks with networks allowing unrestricted intermediaries and with approximately degree-matched random gene sets.
+This algorithm evaluates selected differentially expressed gene (DEG) sets by constructing protein interaction networks in which shared intermediaries are restricted to the condition-specific differentially expressed genes. It compares these networks with networks allowing unrestricted intermediaries and with approximately degree-matched random gene sets.
 
 ## Quick start
 
