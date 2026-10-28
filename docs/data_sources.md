@@ -15,7 +15,7 @@ The Human Protein Atlas Interaction section aggregates IntAct, BioGRID, BioPlex,
 
 Gene-set and bridge files contain only the `ENSEMBL_ID` column required by the analyses. Their row order is preserved from the supplied files. Housekeeping IDs are deduplicated at gene level and version suffixes are stripped as in the original degree analysis. There are 2,139 housekeeping IDs within the 9,825-gene background.
 
-No live database download is required. The original cache's collection date was not recorded in the supplied file, so the repository identifies the snapshot by its checksum. Downloading present-day interaction data would constitute a different input snapshot and can change results.
+No live database download is required. The original cache's collection date was July 2025, so the repository identifies the snapshot by its checksum. Downloading present-day interaction data would constitute a different input snapshot and can change results.
 
 ## External resources
 
