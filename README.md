@@ -45,7 +45,7 @@ python -m unittest discover -s tests -v
 
 ## Included analyses
 
-- Principal Response (G1+G2+G4), Support Group (G3), and Principal-Response-sized limma subsets at 32°C and 41°C.
+- Principal Response (G1+G2+G4), Support Group (G3), and both Principal-Response-sized and G3-sized limma subsets at 32°C and 41°C.
 - Second-order-only and combined first- and second-order networks.
 - Paired unrestricted/restricted comparisons using 1,000 identical random sets per gene set. ΔLCC is unrestricted LCC size minus DEG-restricted LCC size.
 - Upper-tail empirical LCC-size and LCC-edge-count enrichment tests, plus the reported lower-tail comparisons.
@@ -58,7 +58,7 @@ The frozen cache contains **9,825 candidate genes**. Networks use 20 observed-de
 
 ## Findings represented by these files
 
-At 32°C, DEG-restricted LCC sizes were larger than the random expectation for Principal Response, G3, and limma sets. G3 also had enriched LCC edge counts. Principal Response genes preferentially retained connectivity under DEG restriction; the G3 and limma retention tests were not significant. Corresponding restricted-network and retention comparisons at 41°C were not significant. Housekeeping genes were disproportionately allocated to G3 at both temperatures; background enrichment was significant only at 41°C.
+At 32°C, DEG-restricted LCC sizes were larger than the random expectation for Principal Response, G3, and Principal-Response-sized limma sets. G3 also had enriched LCC edge counts. Principal Response genes preferentially retained connectivity under DEG restriction; the G3 and limma retention tests were not significant. Corresponding restricted-network and retention comparisons at 41°C were not significant. G3-sized limma subsets showed no significant restricted LCC-size, restricted edge-count, or connectivity-retention enrichment at either temperature; their unrestricted 32°C LCC edge counts were enriched. Housekeeping genes were disproportionately allocated to G3 at both temperatures; background enrichment was significant only at 41°C.
 
 
 ## Citation and licensing

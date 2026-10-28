@@ -6,7 +6,8 @@ import json
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-CASES = ('principal_32', 'principal_41', 'support_32', 'support_41', 'limma_32', 'limma_41')
+CASES = ('principal_32', 'principal_41', 'support_32', 'support_41', 'limma_32', 'limma_41',
+         'limma_g3_32', 'limma_g3_41')
 
 
 def rows(path):
@@ -41,7 +42,10 @@ def inputs():
         r['ENSEMBL_ID']: set(filter(None, r['KNOWN_INTERACTIONS'].split(';'))) - {r['ENSEMBL_ID']}
         for r in rows(data / 'background_interactions.csv.gz')
     }
-    selected = {case: ids(data / 'gene_sets' / f'{case}.csv') for case in CASES}
+    selected = {case: ids(data / 'gene_sets' / f'{case}.csv') for case in CASES if not case.startswith('limma_g3_')}
+    # Preserve supplied limma ranking; match original G3 sizes before eligibility filtering.
+    for temp in (32, 41):
+        selected[f'limma_g3_{temp}'] = selected[f'limma_{temp}'][:len(selected[f'support_{temp}'])]
     bridges = {temp: set(ids(data / 'deg_bridges' / f'{temp}.csv')) for temp in (32, 41)}
     housekeeping = set(ids(data / 'housekeeping_genes.csv'))
     if any(not set(genes) <= set(background) for genes in selected.values()):

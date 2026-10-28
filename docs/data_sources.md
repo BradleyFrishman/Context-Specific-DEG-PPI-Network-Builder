@@ -5,7 +5,8 @@
 | `data/background_interactions.csv.gz` | Exact supplied Human Protein Atlas interaction cache for 9,825 candidate genes; frozen for reproduction |
 | `data/gene_sets/principal_*.csv` | Supplied Gonzalez-model G1+G2+G4 lists, preserving input order |
 | `data/gene_sets/support_*.csv` | Supplied Gonzalez-model G3 lists, preserving input order |
-| `data/gene_sets/limma_*.csv` | Supplied top-ranked limma subsets, matched to initial Principal Response counts |
+| `data/gene_sets/limma_32.csv`, `limma_41.csv` | Supplied top-ranked limma subsets, matched to initial Principal Response counts |
+| Derived `limma_g3_32` and `limma_g3_41` | First 67 and 53 IDs from the existing ordered limma lists, matching original G3 counts; 63 and 51 remain after network eligibility filtering, without replacement |
 | `data/deg_bridges/32.csv`, `41.csv` | Full condition-specific Gonzalez DEG lists: 2,810 and 2,679 IDs |
 | `data/housekeeping_genes.csv` | Unique Ensembl gene IDs from the supplied Housekeeping and Reference Transcript Atlas v1.0 annotation file |
 | `data/manifest.json` | Byte counts and SHA-256 digests of all computational inputs |
@@ -24,3 +25,5 @@ No live database download is required. The original cache's collection date was 
 - Gonzalez et al. temperature-response model: https://doi.org/10.1186/s12864-026-12823-7
 
 The code license does not replace database licensing or attribution requirements. Consult each database's terms when reusing its content.
+
+The G3-sized limma selections and 1,000-draw reference results were checked against `Limma_G3_results_and_code.zip` (26 October 2026). Its limma subset order, background interaction cache, and full Gonzalez DEG bridge IDs match the inputs already in this repository. The subsets are derived in `src/common.py`, so no duplicate input files are required. The source provenance identifies `paper_update_.zip/humans_limaDEG_32.csv` and `humans_limaDEG_41.csv` as the original ordered limma lists.
