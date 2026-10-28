@@ -24,9 +24,9 @@ Use the analysis names below to find results even if table numbers change during
 | Condition-specific mean, median, sample SD, and sample size | `results/degree_descriptive_statistics.csv` |
 | Degree-distribution KDE and histogram panels | `results/figures/degree_distributions.png` and `.pdf` |
 | Iteration sensitivity | `results/iteration_sensitivity.csv` |
-| Original degree-shift figure | `archive/degree_shift/32C.png` and `41C.png`; see its README |
+| Original degree-shift scenarios and figure | `archive/degree_shift/degree_shift_original.py`, `32C.png`, and `41C.png`; see its README |
 
-`--plots` also redraws the degree-shift bar labels transcribed in `archive/degree_shift/reported_means.csv`. This is a redraw of reported summary values, not regeneration of their unavailable simulation draws.
+`--plots` also redraws the degree-shift bar labels transcribed in `archive/degree_shift/reported_means.csv`. This redraw uses the reported summary values. The original simulation source is now preserved in `archive/degree_shift/degree_shift_original.py`; it specifies 20 iterations per scenario and uses DEG-restricted second-order-only networks. See the archive README for its four shift definitions, original input filenames, and execution instructions. The source is separate from the deterministic `run.py` pipeline and its 1,000-draw enrichment analyses.
 
 The full degree summaries use the supplied complete gene lists. The network node lists record the nodes actually entering each graph. Summary tables and network inputs are kept as separate outputs so they can be traced directly.
 

@@ -40,7 +40,7 @@ python -m unittest discover -s tests -v
 | `docs/analysis_guide.md` | Analysis-to-manuscript mapping and output definitions |
 | `docs/data_sources.md` | Input provenance and identifier conventions |
 | `docs/string_comparison.md` | Reported STRING results and original website settings |
-| `archive/degree_shift/` | Original degree-shift figure panels and provenance notes |
+| `archive/degree_shift/` | Original degree-shift simulation script, figure panels, and provenance notes |
 | `tests/` | Independent checks of graph construction and LCC calculations |
 
 ## Included analyses
