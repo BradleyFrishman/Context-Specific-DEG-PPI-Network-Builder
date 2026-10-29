@@ -39,7 +39,7 @@ python -m unittest discover -s tests -v
 | `reference/` | Final numerical results and draws used for verification |
 | `docs/analysis_guide.md` | Analysis-to-manuscript mapping and output definitions |
 | `docs/data_sources.md` | Input provenance and identifier conventions |
-| `docs/string_comparison.md` | Reported STRING results and original website settings |
+| [`docs/string_comparison.md`](docs/string_comparison.md) | Reported STRING results, original website settings, and 20 random-set comparisons per temperature |
 | [`archive/scrape_proteinatlas2.py`](archive/scrape_proteinatlas2.py) | Human Protein Atlas interaction scraper used to collect the July 2025 snapshot |
 | `archive/degree_shift/` | Figure S1 degree-shift analysis, runner, and figure panels |
 | `tests/` | Independent checks of graph construction and LCC calculations |
