@@ -17,6 +17,21 @@ Gene-set and bridge files contain only the `ENSEMBL_ID` column required by the a
 
 No live database download is required. The original cache's collection date was July 2025, so the repository identifies the snapshot by its checksum. Downloading present-day interaction data would constitute a different input snapshot and can change results.
 
+## Human Protein Atlas scraper
+
+[`archive/scrape_proteinatlas2.py`](../archive/scrape_proteinatlas2.py) is the scraper used to collect interaction partners for the July 2025 HPA snapshot. It uses `requests` to fetch each gene's `structure+interaction` page, reads the embedded JavaScript interaction IDs, and returns Ensembl identifiers after removing the `int` prefix.
+
+To run it interactively from the repository root:
+
+```bash
+python -m pip install requests
+python archive/scrape_proteinatlas2.py
+```
+
+Enter an Ensembl gene ID when prompted. The script prints interaction partners, including duplicates. Its `scrape_interacting_genes_simple(ensembl_id)` function can also be called for individual genes; the script itself does not write the combined cache CSV. The frozen cache stores the collected partner IDs in the `KNOWN_INTERACTIONS` column.
+
+The analysis pipeline reads the bundled July 2025 cache. Running the scraper retrieves current HPA pages, whose contents may differ from that snapshot.
+
 ## External resources
 
 - Human Protein Atlas: https://www.proteinatlas.org/
