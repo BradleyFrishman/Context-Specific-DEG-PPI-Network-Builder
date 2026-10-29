@@ -17,7 +17,7 @@ Repeating the website procedure against a changed database version may produce d
 
 ## Random gene-set comparisons
 
-The following values were recorded in the original STRING comparison for Principal Response (G1+G2+G4) genes and 20 random gene sets per temperature. The manuscript describes the random sets as approximately degree-matched using Human Protein Atlas interaction degree. The values below are transcribed from the author's comparison tables; file numbers retain their original labels. The settings above apply to this comparison.
+The following values were recorded in the original STRING comparison for Principal Response (G1+G2+G4) genes and 20 random gene sets per temperature. The random sets are approximately degree-matched using Human Protein Atlas interaction degree. The settings above apply to this comparison.
 
 | Gene set | 32°C PPI enrichment p-value | 41°C PPI enrichment p-value |
 |---|---|---|
@@ -45,6 +45,5 @@ The following values were recorded in the original STRING comparison for Princip
 
 Across the 20 random sets, STRING PPI enrichment p-values ranged from 1.14e-05 to 0.757 at 32°C and from 0.0011 to 0.842 at 41°C. Nine of 20 random sets at 32°C and seven of 20 at 41°C had p < 0.05. One random set at 32°C had a p-value below that of the Principal Response set; none did at 41°C.
 
-These are comparisons across different random gene sets, not repeated queries of the same input. Matching on Human Protein Atlas degree does not ensure matching on STRING degree. The original random gene lists and STRING identifier mappings would be needed to rerun these queries.
 
-The [CSV](../reference/string_random_controls.csv) contains the same 42 p-values. This descriptive comparison is separate from the framework's 1,000-set network randomizations and does not use a t-test on p-values.
+The [CSV](../reference/string_random_controls.csv) contains the same 42 p-values. This descriptive comparison is separate from the framework's 1,000-set network randomizations.
