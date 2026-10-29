@@ -1,0 +1,11 @@
+temperature,scenario,rerun_lcc_size,figure_s1_lcc_size,difference,iterations
+32,Observed,133.00,133.00,0.00,0
+32,Conservative upshift,126.40,126.25,0.15,20
+32,Aggressive upshift,128.85,133.10,-4.25,20
+32,Conservative downshift,122.20,124.65,-2.45,20
+32,Aggressive downshift,118.65,116.10,2.55,20
+41,Observed,140.00,140.00,0.00,0
+41,Conservative upshift,137.25,137.60,-0.35,20
+41,Aggressive upshift,144.45,143.30,1.15,20
+41,Conservative downshift,133.40,134.45,-1.05,20
+41,Aggressive downshift,126.20,127.10,-0.90,20

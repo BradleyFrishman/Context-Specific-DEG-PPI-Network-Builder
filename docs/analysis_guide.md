@@ -26,7 +26,7 @@ Use the analysis names below to find results even if table numbers change during
 | Iteration sensitivity | `results/iteration_sensitivity.csv` |
 | Original degree-shift scenarios and figure | `archive/degree_shift/degree_shift_original.py`, `32C.png`, and `41C.png`; see its README |
 
-`--plots` also redraws the degree-shift bar labels transcribed in `archive/degree_shift/reported_means.csv`. This redraw uses the reported summary values. The original simulation source is now preserved in `archive/degree_shift/degree_shift_original.py`; it specifies 20 iterations per scenario and uses DEG-restricted second-order-only networks. See the archive README for its four shift definitions, original input filenames, and execution instructions. The source is separate from the deterministic `run.py` pipeline and its 1,000-draw enrichment analyses.
+Figure S1's four degree-shifted reference scenarios are implemented in `archive/degree_shift/degree_shift_original.py`. Run both temperatures with `python archive/degree_shift/run_degree_shift.py`; this uses the bundled inputs and 20 draws per scenario, writing fresh estimates and comparisons with S1 to `results/degree_shift/comparison.csv`. The observed LCC sizes reproduce exactly; randomized means vary because the original script does not set a seed. `run.py --plots` renders the Figure S1 values from `archive/degree_shift/reported_means.csv`. See the archive README for scenario definitions and execution details.
 
 The full degree summaries use the supplied complete gene lists. The network node lists record the nodes actually entering each graph. Summary tables and network inputs are kept as separate outputs so they can be traced directly.
 

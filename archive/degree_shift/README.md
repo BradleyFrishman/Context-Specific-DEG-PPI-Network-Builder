@@ -1,8 +1,8 @@
-# Original degree-shift reference scenarios
+# Degree-shifted reference scenarios (Figure S1)
 
-## Original simulation source
+## Analysis
 
-[degree_shift_original.py](degree_shift_original.py) is the original analysis script supplied by the author on 28 October 2026 as `SHIFTS on Build 2nd order PA sets from Background 4.py`. The source is preserved unchanged and implements the degree-shifted reference scenarios described in the supplementary information.
+[degree_shift_original.py](degree_shift_original.py) computes the four degree-shifted reference scenarios in Figure S1 using DEG-restricted second-order networks and 20 random gene sets per scenario.
 
 The supplied configuration uses the 32°C Principal Response (G1+G2+G4) list, **20 iterations per scenario**, and 8 worker threads. For 41°C, select the corresponding Principal Response interaction file and full condition-specific DEG list in the user parameters.
 
@@ -17,28 +17,23 @@ Here, bins are exact integer counts of recorded interaction partners, so a one-b
 
 Each scenario samples background genes without replacement within a draw. If a target degree cannot be filled, sampling falls back to successively lower available degrees. If no lower degree remains, the script reports unsampled genes. An edge joins two selected genes when they share at least one recorded interaction partner in the full condition-specific DEG list. The network is second-order only and DEG-restricted; intermediary genes are not added as graph nodes. Only endpoints of qualifying edges enter the graph. The script prints the observed LCC and the mean randomized LCC for each scenario.
 
-## Running the preserved source
+## Run both temperatures
 
-Install `pandas`, `numpy`, `networkx`, and `tqdm` in the active Python environment. Run from a directory containing the original inputs, or set the three paths in the script's user-parameter section:
-
-| Parameter | Supplied filename | Required schema |
-|---|---|---|
-| `observed_file` | `humans_g1g2g4_32_v1.csv` | CSV with `ENSEMBL_ID` and semicolon-separated `KNOWN_INTERACTIONS` |
-| `background_file` | `background_proteinatlas_cache.csv` | Same two columns |
-| `long_list_file` | `humans_all_DEG_32.csv` | Headerless CSV; first column contains DEG identifiers |
+From the repository root, install the dependencies and run:
 
 ```bash
-python /path/to/repository/archive/degree_shift/degree_shift_original.py
+python -m pip install -r requirements.txt
+python archive/degree_shift/run_degree_shift.py
 ```
 
-The repository's principal gene-list CSVs contain IDs only, and its DEG bridge CSVs have a header. They therefore require interaction lookup and header removal, respectively, before being supplied to this unchanged source. The background cache is bundled in compressed form at `data/background_interactions.csv.gz`.
+The runner prepares the Principal Response interaction tables and headerless DEG lists from the bundled data, then executes the original script's algorithm with 20 iterations and 8 workers. Only the three input paths are substituted in memory. Results are written to `results/degree_shift/comparison.csv`, with a console log for each temperature. Use `--output PATH` to select another output directory.
 
-The original script uses Python's global random generator without setting a seed and runs draws in threads. It prints summary means rather than saving individual draws. Fresh runs produce new random samples.
+The original script can also be run directly after setting `observed_file`, `background_file`, and `long_list_file`. The first two require `ENSEMBL_ID` and semicolon-separated `KNOWN_INTERACTIONS` columns; the DEG list is a headerless CSV with identifiers in its first column.
 
-## Original SI figure and reported values
+## Figure S1 and rerun comparison
 
-`32C.png` and `41C.png` are the original plot images extracted without redrawing from the supplied Results/SI PDF's degree-shift section (PDF page 12). They correspond to panels A and B of Figure S1.
+`32C.png` and `41C.png` are Figure S1 panels A and B. Their numerical values are in `reported_means.csv`; `run.py --plots` uses this table to render the figure.
 
-`reported_means.csv` transcribes the numerical bar labels from those images. `run.py --plots` redraws those reported values as `results/figures/degree_shift_reported_means.png` and `.pdf`. That command redraws the reported summaries; execution of the original simulation source is described above.
+A fresh 20-draw run is recorded in `rerun_comparison.csv`. It reproduces the observed LCC sizes exactly (133 at 32°C and 140 at 41°C). Randomized means vary between runs because the original script samples without a fixed seed. The comparison table gives both the Figure S1 values and the fresh estimates; it does not replace the Figure S1 values.
 
-These degree-shift scenarios use the original script's 20-iteration setting. They are separate from the 100/500/1,000/1,500 iteration-sensitivity analysis and the main 1,000-draw empirical enrichment tests regenerated by `run.py`. The original figure panels and reported means remain the reference for the SI figure.
+The degree-shift scenarios use 20 draws per scenario. The main enrichment tests use 1,000 draws; the separate iteration-sensitivity analysis evaluates 100, 500, 1,000, and 1,500 draws.

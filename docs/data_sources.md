@@ -28,6 +28,6 @@ The code license does not replace database licensing or attribution requirements
 
 The G3-sized limma selections and 1,000-draw reference results were checked against `Limma_G3_results_and_code.zip` (26 October 2026). Its limma subset order, background interaction cache, and full Gonzalez DEG bridge IDs match the inputs already in this repository. The subsets are derived in `src/common.py`, so no duplicate input files are required. The source provenance identifies `paper_update_.zip/humans_limaDEG_32.csv` and `humans_limaDEG_41.csv` as the original ordered limma lists.
 
-## Original degree-shift source
+## Degree-shift analysis (Figure S1)
 
-`archive/degree_shift/degree_shift_original.py` is the original degree-shift analysis script supplied by the author on 28 October 2026 as `SHIFTS on Build 2nd order PA sets from Background 4.py`. Its contents are preserved unchanged. It implements the SI's four conservative/aggressive up/down reference scenarios, with 20 iterations per scenario and DEG-restricted second-order-only LCC evaluation. Its supplied configuration selects the 32°C Principal Response input; the corresponding 41°C analysis uses that condition's Principal Response and full DEG lists. See the archive README for the exact input schema and sampling behavior.
+`archive/degree_shift/degree_shift_original.py` implements the four conservative/aggressive up/down reference scenarios using 20 random sets per scenario and DEG-restricted second-order LCC evaluation. `run_degree_shift.py` prepares its input tables from the bundled interaction cache, Principal Response IDs, and full condition-specific DEG lists for 32°C and 41°C. Figure S1 values are in `reported_means.csv`; a fresh-run comparison is in `rerun_comparison.csv`.
